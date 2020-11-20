@@ -46,24 +46,25 @@ function draw()
 {
   background(backgroundImg);
   
-  console.log(mouseX, mouseY); 
-
+ // console.log(mouseX, mouseY); 
+console.log(displayHeight);
   if(frameCount%30===0)
   {
-  hamster.x = random(10,displayWidth-200);
-  hamster.y = random(10,displayHeight-100);
+  hamster.x = random(50,displayWidth-200);
+  hamster.y = random(displayHeight-300,displayHeight-200);
+  console.log(hamster.y)
   }
 
   if(frameCount%40===0)
   {
     bomb.x = random(10,displayWidth-200);
-    bomb.y = random(10,displayHeight-100);
+    bomb.y = random(displayHeight-200,displayHeight-100);
   }
 
   player.x = mouseX;
   player.y = mouseY;
   
-  if(keyWentDown(DOWN_ARROW))
+  if(keyWentDown("a"))
   {
     hammerSound.play();
     player.addImage(playerImg2);
@@ -72,7 +73,7 @@ function draw()
 
   }
   
-  if(keyWentUp(DOWN_ARROW))
+  if(keyWentUp("a"))
   {
     player.addImage(playerImg1);
     hit = 0;
@@ -86,7 +87,7 @@ function draw()
 
   fill("red");
   textSize(22);
-  text("Score: "+score,displayWidth-150,50);
+  text("Score: "+score,displayWidth-250,50);
   drawSprites();
  
 }
